@@ -1,0 +1,31 @@
+apply plugin: 'com.android.library'
+
+ext {
+    archLifecycleVersion = "1.0.0"
+}
+
+android {
+    compileSdkVersion 27
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 27
+        versionCode 1
+        versionName "0.1"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    annotationProcessor "android.arch.lifecycle:compiler:${project.archLifecycleVersion}"
+    implementation "android.arch.lifecycle:extensions:${project.archLifecycleVersion}"
+    implementation "android.arch.lifecycle:runtime:${project.archLifecycleVersion}"
+}
